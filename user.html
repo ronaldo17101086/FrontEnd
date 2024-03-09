@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consulta GraphQL</title>
+  </head>
+  <body>
+    <h1>Consulta GraphQL</h1>
+    <form id="graphql-form">
+      <label for="username">Nombre de usuario:</label>
+      <input type="text" id="username" name="username" />
+      <br />
+      <label for="email">Correo electrónico:</label>
+      <input type="text" id="email" name="email" />
+      <br />
+      <button type="button" onclick="sendQuery()">Enviar Consulta</button>
+    </form>
+ronaldo
+    <script>
+      async function sendQuery() {
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+
+        const query = `
+          query {
+            usersByEmailAndUsername(username: "${username}", email: "${email}") {
+              id
+              username
+              email
+              password
+              status
+            }
+          }
+        `;
+
+        const url = "http://localhost:8080/graphql"; // URL del servidor proxy
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Origin: "http://127.0.0.1:5500", // Origen de la solicitud, ajusta según tu caso
+          },
+          body: JSON.stringify({ query }),
+        };
+
+        try {
+          const response = await fetch(url, options);
+          if (!response.ok) {
+            throw new Error("Error en la solicitud: " + response.statusText);
+          }
+          const responseData = await response.json();
+          console.log(responseData);
+        } catch (error) {
+          console.error("Error al enviar la solicitud:", error);
+        }
+      }
+    </script>
+  </body>
+</html>
