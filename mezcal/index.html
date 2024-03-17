@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mezcal</title>
+    <link
+      rel="icon"
+      type="image/jpl"
+      href="https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/339847924_253742737004277_5330463895171274949_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFSqN6Ju6htD4cS42gd7mQxU7t0ZPYzXgBTu3Rk9jNeAFvANHU70CKuBrykTR3de8qsq0fqO5TkLiEQtR_iZaHJ&_nc_ohc=g6akTr5y76kAX83yetk&_nc_ht=scontent-qro1-2.xx&oh=00_AfC8XFYsv2bcJ4XUIwPRUzJUEGqxqnJeQs6_riaVlOipyA&oe=65FADA2A"
+    />
+
+    <style>
+      @media (max-width: 768px) {
+        .login-container {
+          width: 90%; /* Cambiar el ancho para pantallas más pequeñas */
+        }
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #424f42;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .login-container {
+        background-color: #f6f5f5;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+      }
+      .login-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        width: 300px;
+        font-size: 2em;
+      }
+      .login-container form {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+      }
+      .login-container form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        width: 300px;
+      }
+      .login-container form input[type="text"],
+      .login-container form input[type="password"],
+      .login-container form input[type="submit"] {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #121212;
+        border-radius: 5px;
+      }
+      .login-container form input[type="submit"] {
+        background-color: #007bff;
+        color: #f4f2f2;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .login-container form input[type="submit"]:hover {
+        background-color: #1a1a1b;
+      }
+    </style>
+    <style>
+      /* Estilos CSS para la imagen */
+      img {
+        width: 200px; /* Ancho de la imagen */
+        height: auto; /* Altura automática para mantener la proporción */
+        border-radius: 10px; /* Borde redondeado */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra */
+        margin-left: 50px;
+      }
+    </style>
+    <style>
+      .invalid-input {
+        border: 1px solid red; /* Cambiar el borde a rojo */
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // Remueve los parámetros de la URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    </script>
+    <div class="login-container">
+      <img
+        src="https://scontent-qro1-2.xx.fbcdn.net/v/t39.30808-6/339847924_253742737004277_5330463895171274949_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFSqN6Ju6htD4cS42gd7mQxU7t0ZPYzXgBTu3Rk9jNeAFvANHU70CKuBrykTR3de8qsq0fqO5TkLiEQtR_iZaHJ&_nc_ohc=g6akTr5y76kAX83yetk&_nc_ht=scontent-qro1-2.xx&oh=00_AfC8XFYsv2bcJ4XUIwPRUzJUEGqxqnJeQs6_riaVlOipyA&oe=65FADA2A"
+        alt="Image the Mezcal"
+      />
+
+      <br />
+      <br />
+      <form id="loginForm" action="main.html">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          placeholder="UserName or Email"
+          pattern="(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})|([a-zA-Z0-9._%+-]+)"
+        />
+        <label for="password">Password:</label>
+        <div style="position: relative">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder="Password"
+          />
+          <span
+            id="toggle-password"
+            style="
+              position: absolute;
+              top: 50%;
+              right: 10px;
+              transform: translateY(-50%);
+              cursor: pointer;
+            "
+            >Show</span
+          >
+        </div>
+
+        <script>
+          const passwordInput = document.getElementById("password");
+          const togglePasswordButton =
+            document.getElementById("toggle-password");
+          togglePasswordButton.addEventListener("click", function () {
+            if (passwordInput.type === "password") {
+              passwordInput.type = "text";
+              togglePasswordButton.textContent = "Hide";
+            } else {
+              passwordInput.type = "password";
+              togglePasswordButton.textContent = "Show";
+            }
+          });
+          function validateForm() {
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
+
+            // Verificar si ambos campos tienen un valor
+            if (!usernameInput.value || !passwordInput.value) {
+              alert("Por favor, complete todos los campos.");
+              return false; // Detener el envío del formulario
+            }
+
+            // Si todos los campos están completos, permitir el envío del formulario
+            return true;
+          }
+        </script>
+        <input onclick="delayedSendQuery(event)" type="submit" value="Login" />
+      </form>
+    </div>
+
+    <script>
+      //  function sleep(ms) {
+      //  return new Promise((resolve) => setTimeout(resolve, ms));
+      //  }
+
+      function delayedSendQuery(event) {
+        // Aquí colocas la lógica para enviar la consulta
+        console.log("Consulta enviada 2");
+        validateFields();
+      }
+      function validateFields() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        // Verifica si ambos campos están llenos
+        console.log("1");
+        if (username.trim() !== "" && password.trim() !== "") {
+          console.log("2");
+          console.log("Inicio");
+
+          sendQuery().then((users) => {
+            console.log("Retorno de sendQuery:", users);
+
+            // Verificar si el arreglo de usuarios no está vacío
+            if (users.length > 0) {
+              const idResponse = users[0].id;
+              const usernameResponse = users[0].username;
+              const emailResponse = users[0].email;
+              const passwordResponse = users[0].password;
+              const statusResponse = users[0].status;
+
+              // Validar si el usuario y la contraseña coinciden con los obtenidos
+              console.log(password + "   ---------->");
+              console.log(username + "   ---------->");
+              console.log(passwordResponse + "   ---------->");
+              console.log(usernameResponse + "   ---------->");
+              if (
+                (username === usernameResponse || username === emailResponse) &&
+                password === passwordResponse
+              ) {
+                setTimeout(function () {
+                  document.getElementById("loginForm").submit();
+                }, 5000);
+                console.log("Se subira en 5 segundos");
+                console.log("El usuario y contraseña son correctos :D");
+                document.getElementById("password").value = "";
+              } else {
+                console.log("El usuario y contraseña son incorrectos");
+                alert("No se encontraron usuarios (alert 1)");
+              }
+            } else {
+              console.log("No se encontraron usuarios");
+              alert("No se encontraron usuarios (alert 2)");
+              document.getElementById("password").value = "";
+            }
+          });
+          event.preventDefault();
+        }
+      }
+    </script>
+
+    <script>
+      async function sendQuery() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const query = `
+          query {
+            usersByEmailAndUsername(username: "${username}", email: "${password}") {
+              id
+              username
+              email
+              password
+              status
+            }
+          }
+        `;
+
+        const url = "http://localhost:8080/graphql"; // URL del servidor proxy
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Origin: "http://127.0.0.1:5500", // Origen de la solicitud, ajusta según tu caso
+          },
+          body: JSON.stringify({ query }),
+        };
+
+        try {
+          const response = await fetch(url, options);
+          if (!response.ok) {
+            throw new Error("Error en la solicitud: " + response.statusText);
+          }
+          setTimeout(function () {}, 1000);
+
+          const responseData = await response.json();
+          console.log(responseData);
+
+          console.log("serealizando 1");
+          const users = responseData.data.usersByEmailAndUsername;
+          users.forEach((user) => {
+            const id = user.id || "Campo vacío";
+            const username = user.username || "Campo vacío";
+            const email = user.email || "Campo vacío";
+            const password = user.password || "Campo vacío";
+            const status = user.status || "Campo vacío";
+            console.log("ID:", user.id);
+            console.log("Username:", user.username);
+            console.log("Email:", user.email);
+            console.log("Password:", user.password);
+            console.log("Status:", user.status);
+          });
+          return users;
+        } catch (error) {
+          console.error("Error al enviar la solicitud:", error);
+        }
+      }
+    </script>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
